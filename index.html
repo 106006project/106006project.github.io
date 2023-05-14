@@ -72,168 +72,13 @@
             <i class="bi bi-grid-3x3-gap-fill fs-3"></i>
           </a>
           <div class="dropdown-menu dropdown-menu-end rounded-2" style="width:25rem;max-width:94vw;">
-            <div class="row px-auto g-0 text-center w-100 overflow-y-scroll fw-bold" style="min-height: 10rem;max-height:100vh;">
-              <div class="col-4 py-0 my-0" style="max-height:10rem !important;">
-                <a href="/" class="btn border-0 text-center border-0 {%if request.path=='/'%}fw-bold text-primary{%else%}text-muted{%endif%}" aria-current="page">
-                  <div class="bi fs-1 bi-house"></div>
-                  首頁
-                </a>
-              </div>
-              {%if current_user.is_authenticated%}
-              <div class="col-4 py-0 my-0" style="max-height:10rem !important;">
-                <a href="/profile" class="btn border-0 text-center border-0 {%if request.path=='/profile'%}fw-bold text-primary{%else%}text-muted{%endif%}" aria-current="page">
-                  <div class="fs-1 rounded-circle"><img class="rounded-circle border-2 {%if request.path=='/profile'%}border-primary{%else%}border-secondary{%endif%} border" src="{%if not current_user.avatar.startswith('http')%}/static/{%endif%}{{current_user.avatar}}" style="max-width:3.5rem;" alt=""></div>
-                  <font style="vertical-align: inherit;">
-                    <font style="vertical-align: inherit;">
-                      個人檔案
-                    </font>
-                  </font>
-                  <span class="badge rounded-pill bg-danger">
-                    自訂頭像!!
-                    <span class="visually-hidden">unread messages</span>
-                  </span>
-                </a>
-              </div>
-              {%endif%}
-              <div class="col-4 py-0 my-0" style="max-height:10rem !important;">
-                <a href="/tools/meet_confirm" data-bs-placement="bottom" data-bs-toggle="tooltip" data-bs-title="本功能暫未通過Google驗證，名額有限，要搶要快!!" 
-                data-bs-custom-class="custom-tooltip" style="cursor:pointer"  class="btn border-0 text-center border-0 {%if '/tools/meet' in request.path%}fw-bold text-primary{%else%}text-muted{%endif%}" aria-current="page" >
-                  <div class="bi bi-camera fs-1"></div>
-                  創建 Meet
-                </a>
-              </div>
-              {%if current_user.is_student%}
-              <div class="col-4 py-0 my-0" style="max-height:10rem !important;">
-                <a href="/sche/" class="btn border-0 text-center border-0 {%if '/sche/' in request.path %}fw-bold text-primary{%else%}text-muted{%endif%}">
-                  <div class="bi fs-1 bi-calendar-date"></div>
-                  班級行程表
-                  
-                </a>
-              </div>
-              {%endif%}
-              {%if current_user.is_asistnt%}
-              <div class="col-4 py-0 my-0" style="max-height:10rem !important;">
-                <a href="/tskn/" class="btn border-0 text-center border-0 {%if '/tskn/' in request.path %}fw-bold text-primary{%else%}text-muted{%endif%}">
-                  <div class="bi fs-1 bi-calendar-plus"></div>
-                  班級排程
-                  
-                </a>
-              </div>
-              {%endif%}
-              {%if current_user.is_teacher%}
-              <div class="col-4 py-0 my-0" style="max-height:10rem !important;">
-                <a href="/tskn/" class="btn border-0 text-center border-0 {%if '/tskn/' in request.path %}fw-bold text-primary{%else%}text-muted{%endif%}">
-                  <div class="bi fs-1 bi-calendar-plus"></div>
-                  班級排程
-                  
-                </a>
-              </div>
-              <div class="col-4 py-0 my-0" style="max-height:10rem !important;">
-                <a href="/certi/" class="btn border-0 text-center border-0 {%if '/certi/' in request.path %}fw-bold text-primary{%else%}text-muted{%endif%}">
-                  <div class="bi fs-1 bi-filetype-pdf"></div>
-                  獎狀產生
-                  
-                </a>
-              </div>
-              <div class="col-4 py-0 my-0" style="max-height:10rem !important;">
-                <a href="/clsm/" class="btn border-0 text-center border-0 {%if '/clsm/' in request.path %}fw-bold text-primary{%else%}text-muted{%endif%}">
-                  <div class="bi fs-1 bi-building-gear"></div>
-                  班級管理
-                  
-                </a>
-              </div>
-              <div class="col-4 py-0 my-0" style="max-height:10rem !important;">
-                <a href="/exam/create" class="btn border-0 text-center border-0 {%if '/exam/' in request.path %}fw-bold text-primary{%else%}text-muted{%endif%}">
-                  <div class="bi bi-journal-plus fs-1"></div>
-                  考試管理
-                  <span class="badge rounded-pill bg-primary">
-                    測試
-                    <span class="visually-hidden">unread messages</span>
-                  </span>
-                </a>
-              </div>
-              {%endif%}
-              {%if current_user.is_admin%}
-              <div class="col-4 py-0 my-0" style="max-height:10rem !important;">
-                <a href="/fgupr" class="btn border-0 text-center border-0 {%if request.path=='/fgupr'%}fw-bold text-primary{%else%}text-muted{%endif%}">
-                  <div class="bi fs-1 bi-inbox"></div>
-                  忘記密碼及問題回報
-                </a>
-              </div>
-              <div class="col-4 py-0 my-0" style="max-height:10rem !important;">
-                <a href="/clear_captchas" class="btn border-0 text-center border-0 {%if request.path=='/clear_captchas'%}fw-bold text-primary{%else%}text-muted{%endif%}" data-bs-placement="bottom" data-bs-toggle="tooltip" data-bs-title="使用G-recaptcha，或未曾重啟過伺服器則不需使用" 
-                data-bs-custom-class="custom-tooltip" >
-                  <div class="bi fs-1 bi-list-nested"></div>
-                  清除驗證快取
-                </a>
-              </div>
-              <div class="col-4 py-0 my-0" style="max-height:10rem !important;">
-                <a href="/adm/" class="btn border-0 text-center border-0 {%if '/adm/' in request.path %}fw-bold text-primary{%else%}text-muted{%endif%}">
-                  <div class="bi fs-1 bi-gear"></div>
-                  管理者系統
-                </a>
-              </div>
-              {%endif%}
-              <div class="col-4 py-0 my-0" style="max-height:10rem !important;">
-                <a href="/qa/qas" class="btn border-0 text-center border-0 {%if '/qa/' in request.path %}fw-bold text-primary{%else%}text-muted{%endif%}">
-                  <div class="bi fs-1 bi-chat-left-text"></div>
-                  課業問與答
-                </a>
-              </div>
-              
-              {%if current_user.is_authenticated%}
-              <div class="col-4 py-0 my-0" style="max-height:10rem !important;">
-                <a href="/settings" class="btn border-0 text-center border-0 {%if request.path=='/settings'%}fw-bold text-primary{%else%}text-muted{%endif%}" aria-current="page">
-                  <div class="bi fs-1 bi-gear"></div>
-                  設置
-                  {%if not current_user.is_admin%}
-                  <br>
-                  <div class="badge rounded-pill bg-danger">
-                    新功能!!
-                    <span class="visually-hidden">unread messages</span>
-                  </div>
-                  {%endif%}
-                </a>
-              </div>
-              <div class="col-4 py-0 my-0" style="max-height:10rem !important;">
-                <a href="/logout" class="btn border-0 text-center border-0 {%if request.path=='/logout'%}fw-bold text-primary{%else%}text-muted{%endif%}" aria-current="page">
-                  <div class="bi fs-1 bi-box-arrow-right"></div>
-                  <font style="vertical-align: inherit;">
-                    <font style="vertical-align: inherit;">
-                      登出
-                    </font>
-                  </font>
-                </a>
-              </div>
-              {%else%}
-              <div class="col-4 py-0 my-0" style="max-height:10rem !important;">
-                <a href="/login" class="btn border-0 text-center border-0 {%if request.path=='/login'%}fw-bold text-primary{%else%}text-muted{%endif%}" aria-current="page">
-                  <div class="bi fs-1 bi-box-arrow-in-right"></div>
-                  <font style="vertical-align: inherit;">
-                    <font style="vertical-align: inherit;">
-                      登入/註冊
-                    </font>
-                  </font>
-                </a>
-              </div>
-              <div class="col-4 py-0 my-0" style="max-height:10rem !important;">
-                <a href="/login_help" class="btn border-0 text-center border-0 {%if request.path in['/login_help','/help0','/help1','/help2']%}fw-bold text-primary{%else%}text-muted{%endif%}" aria-current="page">
-                  <div class="bi fs-1 bi-gear"></div>
-                  登入協助
-                </a>
-              </div>
-              {%endif%}
-            </div>
           </div>
         </div>
-        <!-- <div class="flex-shrink-0 me-2" style="cursor: pointer;" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight" >
-          <i class="bi bi-list fw-bold fs-1"></i>
-        </div> -->
         <p></p>
       </div>
     </div>
   </header>
-  <marquee class="bg-primary-subtle border-top border-bottom border-primary fw-bold w-100 text-light-subtle overflow-x-scroll p-1 text-nowrap" scrollamount="3" style="height:2rem;">頁面若經常在加載後要求登入，則為製作者修改程式後重啟系統造成，非常抱歉。</marquee>
+  <marquee class="bg-primary-subtle border-top border-bottom border-primary fw-bold w-100 text-light-subtle overflow-x-scroll p-1 text-nowrap" scrollamount="3" style="height:2rem;">目前本系統無法架設伺服器，所有服務無法使用，非常抱歉。</marquee>
 <style>
   .custom-tooltip {
     --bs-tooltip-bg: var(--bs-primary);
@@ -281,8 +126,8 @@
       <font class="text-primary">幫</font>
       <font class="text-primary">手</font>
     </font>
-    <div class="text-center ms-0" id="tasks">
-      
+    <div class="text-center ms-0 text-warning fw-bold" id="tasks">
+      系統停用
     </div>
     </div>
 <!--     <div class="progress mt-auto mb-0 fw-bold" role="progressbar" aria-label="Animated striped example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
@@ -300,10 +145,7 @@
   <footer class="py-3 border-top mt-auto mb-0 fw-bold">
     <ul class="nav justify-content-center border-bottom pb-3 mb-3">
       <li class="nav-item"><a href="/" class="nav-link px-2 text-muted">首&nbsp;&nbsp;&nbsp;&nbsp;頁</a></li>
-      <li class="nav-item"><a href="/about" class="nav-link px-2 text-muted">關於我們</a></li>
       <li class="nav-item"><a href="https://docs.google.com/forms/d/e/1FAIpQLSc8eBT1MDnjfPcVtVd8MW23isClaHStFo8H0b2g1sG7cHI6yw/viewform?usp=pp_url&entry.714331028=5" target="_blank" class="nav-link px-2 text-success">意見回饋</a></li>
-      <li class="nav-item"><a href="/policy" class="nav-link px-2 text-muted">隱私權政策</a></li>
-      <li class="nav-item"><a href="/material" class="nav-link px-2 text-muted">素材使用</a></li>
       <li class="nav-item">
         <a role="button" href="https://page.line.me/?accountId=742odmds" draggable="false" target="_blank" class="btn btn-outline-success p-1 border-0"><i class="bi bi-line fs-3"></i></a>
       </li>
