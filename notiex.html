@@ -170,6 +170,7 @@
   </footer>
   <script>
     $(()=>{
+      $("body").addClass("d-flex flex-column min-vh-100 w-100 mx-auto overflow-scroll");
       const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
       const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
       const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
